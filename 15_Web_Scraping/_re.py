@@ -13,7 +13,10 @@ str = "Python is fun. Yes I'm sure it is Python."
 # result = re.split("y", str)
 
 # "/s" means blank space
-result = re.sub(" ", "_", str)
-result = re.sub("\s", ".", str)
+
+# result = re.sub(" ", "_", str)
+# result = re.sub("\s", ".", str)
+
+
 
 print(result)
