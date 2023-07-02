@@ -31,10 +31,27 @@ class UserRepo:
         self.users.append(user)
         self.saveToFile()
         print("User created!")
-    def login(self, username, password):
+
+    def login(self, username, password):    
         for user in self.users:
-            if user.username == username and user.password == password: ********************
+            if user.username == username and user.password == password:
+                self.isLoggedIn = True
+                self.currentUser = user
+                print('Login succesfull!')
+                return
+        print('Your login details are incorrect. please try again or sign up.')
+
         
+    def logout(self):
+        self.isLoggedIn = False
+        self.currentUser = {}
+        print('Logout is succesfull!')
+    
+    def identity(self):
+        if self.isLoggedIn:
+            print(f'username: {self.currentUser.username}')
+        else:
+            print('Failed to login!')
 
     def saveToFile(self):
         list = []
@@ -61,10 +78,16 @@ while True:
             user = User(username=username, password=password, email=email)
             repo.register(user)
         elif secim == '2':
-            pass #login
+            if repo.isLoggedIn:
+                print('You are already logged in!')
+            else:
+                username = input('username: ')
+                password = input('password: ')
+                repo.login(username, password)
+
         elif secim == '3':
-            pass #logout
+            repo.logout()
         elif secim == '4':
-            pass #display user information
+            repo.identity()
         else:
             print ('Invalid login information, please try again.')
