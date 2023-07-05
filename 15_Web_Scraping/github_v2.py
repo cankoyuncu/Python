@@ -3,7 +3,7 @@ import requests
 class Github:
     def __init__(self):
         self.api_url = 'https://api.github.com'
-        self.token = 'xxxxxxx' #https://github.com/settings/tokens
+        self.token = 'xxxxxxxxxxxx' #https://github.com/settings/tokens
 
     def getUser(self, username):
         response = requests.get(self.api_url+'/users/'+username)
@@ -14,7 +14,11 @@ class Github:
         return response.json()
     
     def createRepository(self, name):
-        response = requests.post(self.api_url+'/user/repos?access_token'+ self.token, json={
+        headers = {
+            'Authorization': 'Bearer ' + self.token
+        }
+        
+        response = requests.post(self.api_url+'/user/repos', headers=headers, json={
             "name": name,
             "description": "Text repo",
             "homepage": "http://cankoyuncu.com/",
@@ -24,7 +28,7 @@ class Github:
             "has_wiki": True
         })
         return response.json()
-    
+
 github = Github()    
 
 while True:
