@@ -15,5 +15,5 @@ for tr in list:
     rating = tr.find("td", {"class":"ratingColumn imdbRating"}).find("strong").text
     count+=1
 
-    print(f"{count}- film: {title.ljust(50)} yıl: {year} degerlendirme: {rating}")
+    print(f"{count}- film: {title.ljust(50)} yil: {year} degerlendirme: {rating}")
     count+=1
