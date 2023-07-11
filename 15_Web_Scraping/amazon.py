@@ -6,21 +6,18 @@ url = "https://www.amazon.com.tr/s?bbn=13710018031&rh=n%3A12466496031%2Cn%3A1747
 html = requests.get(url).content
 soup = BeautifulSoup(html, "html.parser")
 
-list = soup.find_all("li", {"class":"octopus-pc-item octopus-pc-item-v3"}, limit=1)
+item_list = soup.find_all("li", {"class": "octopus-pc-item octopus-pc-item-v3"}, limit=1)
 
-# for li in list:
-#     name = li.div.a.h3.text.strip()
-#     link = li.div.a.get("href")
-#     print(link)
-#     oldprice = li.find("div", {"class":"proDetail"}).find_all("a")[0].text.strip().strip("TL")
-#     newprice = li.find("div", {"class":"proDetail"}).find_all("a")[1].text.strip().strip("TL")
+for li in item_list:
+    title = li.find("span", {"class": "a-size-base a-color-base"}).text
+    print(title)
 
-print(list) 
+    # link = li.div.a.get("href")
+    # print(link)
+    # oldprice = li.find("div", {"class":"proDetail"}).find_all("a")[0].text.strip().strip("TL")
+    # newprice = li.find("div", {"class":"proDetail"}).find_all("a")[1].text.strip().strip("TL")
 
-
-
-
-
+print(item_list) 
 
 
 
