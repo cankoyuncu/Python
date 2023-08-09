@@ -9,13 +9,13 @@ soup = BeautifulSoup(html, "html.parser")
 item_list = soup.find_all("li", {"class": "octopus-pc-item octopus-pc-item-v3"}, limit=1)
 
 for li in item_list:
-    title = li.find("span", {"class": "a-size-base a-color-base"}).text
+    title = li.find("div.span", {"class": "a-size-base a-color-base"}).text
     print(title)
 
-    # link = li.div.a.get("href")
-    # print(link)
-    # oldprice = li.find("div", {"class":"proDetail"}).find_all("a")[0].text.strip().strip("TL")
-    # newprice = li.find("div", {"class":"proDetail"}).find_all("a")[1].text.strip().strip("TL")
+    link = li.div.a.get("href")
+    print(link)
+    price = li.find("div", {"class":"a-price"}).find_all("text")[0].text.strip().strip("TL")
+    
 
 print(item_list) 
 
